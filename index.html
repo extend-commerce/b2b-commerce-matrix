@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B2B Commerce Capability Planner — Extend Commerce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Hidden form for Netlify Forms detection at deploy time -->
+    <form name="planner-submissions" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="hidden" name="selected_features" />
+      <input type="hidden" name="feature_count_shopify" />
+      <input type="hidden" name="feature_count_extend" />
+      <input type="hidden" name="feature_count_codup" />
+      <input type="hidden" name="notes" />
+    </form>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
