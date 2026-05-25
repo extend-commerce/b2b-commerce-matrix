@@ -1,73 +1,23 @@
-# React + TypeScript + Vite
+# B2B Commerce Capability Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interactive B2B feature planning tool for [Extend Commerce](https://extendcommerce.com) by [Codup](https://codup.co).
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Install dependencies: `npm install`
+2. Copy `.env.example` to `.env.local` and add your Anthropic API key
+3. Run dev server: `npm run dev`
 
-## React Compiler
+## Environment Variables
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Variable | Description |
+|----------|-------------|
+| `VITE_ANTHROPIC_API_KEY` | Anthropic API key for the AI feature analysis |
 
-## Expanding the ESLint configuration
+## Deploy (Netlify)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+- **Environment variable:** Set `VITE_ANTHROPIC_API_KEY` in Netlify → Site settings → Environment variables
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Netlify Forms is auto-detected from the hidden form in `index.html`. After first deploy, configure email notifications in Netlify → Forms → planner-submissions → Notifications → send to `support@extendcommerce.com`.

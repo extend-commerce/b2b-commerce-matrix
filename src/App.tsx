@@ -132,99 +132,76 @@ export default function App() {
       {/* Main content */}
       <main style={{ flex: 1 }}>
         {currentScreen === 'planner' ? (
-          <div style={{ position: 'relative', zIndex: 1 }}>
+          <div className="app-content">
             {/* AI Input Bar */}
-            <div
-              style={{
-                maxWidth: 1600,
-                margin: '0 auto',
-                padding: '24px 24px 16px',
-              }}
-            >
+            <div className="planner-input-wrap">
               <AIInputBar onFeaturesIdentified={handleAIFeatures} />
             </div>
 
-            {/* Matrix + Sidebar */}
-            <div
-              style={{
-                maxWidth: 1600,
-                margin: '0 auto',
-                padding: '0 24px 24px',
-                display: 'flex',
-                gap: 0,
-                alignItems: 'flex-start',
-              }}
-            >
-              {/* Left: Matrix area */}
-              <div style={{ flex: 1, minWidth: 0 }}>
-                {/* Legend bar */}
+            {/* Legend bar */}
+            <div className="legend-bar">
+              {PROVIDERS_LEGEND.map(({ dot, label, sub }) => (
                 <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 20,
-                    marginBottom: 12,
-                  }}
+                  key={label}
+                  style={{ display: 'flex', alignItems: 'center', gap: 6 }}
                 >
-                  {PROVIDERS_LEGEND.map(({ dot, label, sub }) => (
-                    <div
-                      key={label}
-                      style={{ display: 'flex', alignItems: 'center', gap: 6 }}
-                    >
-                      <span
-                        style={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: '50%',
-                          background: dot,
-                          display: 'inline-block',
-                          flexShrink: 0,
-                        }}
-                      />
-                      <span
-                        style={{
-                          fontSize: 12,
-                          color: '#94A3B8',
-                          lineHeight: 1,
-                        }}
-                      >
-                        <strong style={{ color: '#94A3B8', fontWeight: 500 }}>
-                          {label}
-                        </strong>{' '}
-                        — {sub}
-                      </span>
-                    </div>
-                  ))}
-
-                  {/* Clear all — right-aligned */}
-                  <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                    {selectedFeatures.size > 0 && (
-                      <button
-                        onClick={clearAll}
-                        style={{
-                          background: 'none',
-                          border: 'none',
-                          color: '#475569',
-                          fontSize: 12,
-                          cursor: 'pointer',
-                          padding: '2px 0',
-                          fontFamily: 'inherit',
-                          transition: 'color 0.15s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = '#94A3B8';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = '#475569';
-                        }}
-                      >
-                        Clear all
-                      </button>
-                    )}
-                  </div>
+                  <span
+                    style={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      background: dot,
+                      display: 'inline-block',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: 12,
+                      color: '#94A3B8',
+                      lineHeight: 1,
+                    }}
+                  >
+                    <strong style={{ color: '#94A3B8', fontWeight: 500 }}>
+                      {label}
+                    </strong>{' '}
+                    — {sub}
+                  </span>
                 </div>
+              ))}
 
-                {/* Feature matrix */}
+              {/* Clear all — right-aligned */}
+              <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                {selectedFeatures.size > 0 && (
+                  <button
+                    onClick={clearAll}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#475569',
+                      fontSize: 12,
+                      cursor: 'pointer',
+                      padding: '2px 0',
+                      fontFamily: 'inherit',
+                      transition: 'color 0.15s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#94A3B8';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#475569';
+                    }}
+                  >
+                    Clear all
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Matrix + Sidebar */}
+            <div className="planner-body">
+              {/* Left: Matrix area */}
+              <div className="matrix-wrap">
                 <FeatureMatrix
                   selectedFeatures={selectedFeatures}
                   onToggle={toggleFeature}
@@ -232,16 +209,7 @@ export default function App() {
               </div>
 
               {/* Right: Sticky sidebar */}
-              <div
-                style={{
-                  width: 264,
-                  flexShrink: 0,
-                  position: 'sticky',
-                  top: 72,
-                  maxHeight: 'calc(100vh - 88px)',
-                  overflowY: 'auto',
-                }}
-              >
+              <div className="sidebar-wrap">
                 <SummaryPanel
                   selectedFeatures={selectedFeatures}
                   notes={notes}
@@ -250,6 +218,26 @@ export default function App() {
                 />
               </div>
             </div>
+
+            {/* Mobile floating CTA */}
+            {selectedFeatures.size > 0 && (
+              <div className="mobile-fab" style={{
+                position: 'fixed', bottom: 24, left: '50%',
+                transform: 'translateX(-50%)', zIndex: 20,
+              }}>
+                <button
+                  onClick={() => setShowEmailModal(true)}
+                  style={{
+                    background: '#2563eb', color: 'white', border: 'none',
+                    borderRadius: 100, padding: '12px 24px', fontSize: 14,
+                    fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit',
+                    boxShadow: '0 4px 24px rgba(37,99,235,0.4)', whiteSpace: 'nowrap',
+                  }}
+                >
+                  Generate My Plan · {selectedFeatures.size} selected
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <SolutionSummary
