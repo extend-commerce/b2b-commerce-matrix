@@ -1,161 +1,65 @@
-import type { Feature } from '../types';
+import type { Feature, Provider } from '../types';
+import csvRaw from './features.csv?raw';
 
-export const FEATURES: Feature[] = [
-  // CATALOG & PRICING
-  { id: "cat_1",  category: "Catalog & Pricing",       feature: "Company-specific price lists",                              provider: "Shopify" },
-  { id: "cat_2",  category: "Catalog & Pricing",       feature: "Volume / tiered pricing breaks",                           provider: "Shopify" },
-  { id: "cat_3",  category: "Catalog & Pricing",       feature: "Quantity rules (MOQ and case pack multiples)",              provider: "Shopify" },
-  { id: "cat_4",  category: "Catalog & Pricing",       feature: "Multiple catalogs (unlimited on Plus)",                    provider: "Shopify" },
-  { id: "cat_5",  category: "Catalog & Pricing",       feature: "Restricted catalog visibility per account",                provider: "Shopify" },
-  { id: "cat_6",  category: "Catalog & Pricing",       feature: "Currency support via Shopify Markets",                     provider: "Shopify" },
-  { id: "cat_7",  category: "Catalog & Pricing",       feature: "Product tables with metafields and attributes",            provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "cat_8",  category: "Catalog & Pricing",       feature: "Variant tables on product detail pages",                   provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "cat_9",  category: "Catalog & Pricing",       feature: "Attribute display (specs / dimensions / UOM)",             provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "cat_10", category: "Catalog & Pricing",       feature: "Catalog-synced pricing in quick order tables",             provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "cat_11", category: "Catalog & Pricing",       feature: "Product configurator (SKU-level config / parts / rules)",  provider: "Extend",  app: "Extend Product Configurator" },
-  { id: "cat_12", category: "Catalog & Pricing",       feature: "Contract pricing engine (outside of catalogs)",            provider: "Codup" },
-  { id: "cat_13", category: "Catalog & Pricing",       feature: "ERP-synced / real-time pricing pull",                      provider: "Codup" },
-  { id: "cat_14", category: "Catalog & Pricing",       feature: "Dynamic pricing rules (complex conditional logic)",        provider: "Codup" },
-  { id: "cat_15", category: "Catalog & Pricing",       feature: "Hidden pricing for guest or unapproved visitors",          provider: "Codup" },
+// ── CSV parser ────────────────────────────────────────────────────────────────
+// Parses the features.csv file into a Feature array.
+// Columns: id, feature, category, provider, app
+function parseFeatureCSV(csv: string): Feature[] {
+  const lines = csv.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.trim());
 
-  // ORDERING
-  { id: "ord_1",  category: "Ordering",                feature: "Draft orders",                                             provider: "Shopify" },
-  { id: "ord_2",  category: "Ordering",                feature: "PO number field at checkout",                              provider: "Shopify" },
-  { id: "ord_3",  category: "Ordering",                feature: "Basic reorder from order history",                         provider: "Shopify" },
-  { id: "ord_4",  category: "Ordering",                feature: "Quick order / product table ordering",                     provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "ord_5",  category: "Ordering",                feature: "CSV order upload",                                         provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "ord_6",  category: "Ordering",                feature: "Bulk add-to-cart (multi-SKU / multi-qty)",                 provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "ord_7",  category: "Ordering",                feature: "Multi-cart (save multiple named carts)",                   provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "ord_8",  category: "Ordering",                feature: "Shared / collaborative carts (per company)",               provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "ord_9",  category: "Ordering",                feature: "Cart naming and organization",                             provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "ord_10", category: "Ordering",                feature: "Checkout restriction by cart value or category",           provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "ord_11", category: "Ordering",                feature: "B2B ordering at POS (trade counter / showroom)",           provider: "Extend",  app: "Extend POS for B2B" },
-  { id: "ord_12", category: "Ordering",                feature: "Standing / scheduled repeat orders",                       provider: "Codup" },
-  { id: "ord_13", category: "Ordering",                feature: "Order templates with pre-set SKU lists",                   provider: "Codup" },
-  { id: "ord_14", category: "Ordering",                feature: "EDI order ingestion (850/855)",                            provider: "Codup" },
-  { id: "ord_15", category: "Ordering",                feature: "API-based order injection from external systems",          provider: "Codup" },
-  { id: "ord_16", category: "Ordering",                feature: "Configure-to-order / CPQ beyond configurator",             provider: "Codup" },
+  const idx = {
+    id:       headers.indexOf('id'),
+    feature:  headers.indexOf('feature'),
+    category: headers.indexOf('category'),
+    provider: headers.indexOf('provider'),
+    app:      headers.indexOf('app'),
+  };
 
-  // ACCOUNTS & PERMISSIONS
-  { id: "acc_1",  category: "Accounts & Permissions",  feature: "Company profiles",                                         provider: "Shopify" },
-  { id: "acc_2",  category: "Accounts & Permissions",  feature: "Company locations (multi-location per account)",           provider: "Shopify" },
-  { id: "acc_3",  category: "Accounts & Permissions",  feature: "Parent / child company hierarchy",                         provider: "Shopify" },
-  { id: "acc_4",  category: "Accounts & Permissions",  feature: "Basic buyer roles (admin-assigned)",                       provider: "Shopify" },
-  { id: "acc_5",  category: "Accounts & Permissions",  feature: "B2B login via customer accounts",                          provider: "Shopify" },
-  { id: "acc_6",  category: "Accounts & Permissions",  feature: "Company onboarding form with admin approval",              provider: "Extend",  app: "Extend B2B Onboarding" },
-  { id: "acc_7",  category: "Accounts & Permissions",  feature: "Location management during onboarding",                    provider: "Extend",  app: "Extend B2B Onboarding" },
-  { id: "acc_8",  category: "Accounts & Permissions",  feature: "Role-based cart access (Viewer / Editor / Approver)",      provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "acc_9",  category: "Accounts & Permissions",  feature: "Cart-level approval workflows",                            provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "acc_10", category: "Accounts & Permissions",  feature: "Advanced multi-step purchase approval workflows",          provider: "Codup" },
-  { id: "acc_11", category: "Accounts & Permissions",  feature: "Territory / region-based account assignment",              provider: "Codup" },
-  { id: "acc_12", category: "Accounts & Permissions",  feature: "Rep-to-account assignment",                                provider: "Codup" },
-  { id: "acc_13", category: "Accounts & Permissions",  feature: "Enterprise company hierarchies (beyond 2 levels)",         provider: "Codup" },
-  { id: "acc_14", category: "Accounts & Permissions",  feature: "SSO / SAML / OIDC identity integration",                   provider: "Codup" },
-  { id: "acc_15", category: "Accounts & Permissions",  feature: "Custom account permission rules",                          provider: "Codup" },
+  return lines.slice(1)
+    .filter(line => line.trim().length > 0)
+    .map(line => {
+      // Simple CSV split — handles the data as-is (no quoted commas in this CSV)
+      const cols = line.split(',').map(c => c.trim());
 
-  // CHECKOUT & PAYMENTS
-  { id: "chk_1",  category: "Checkout & Payments",     feature: "Payment terms (Net 30 / 60 / 90)",                         provider: "Shopify" },
-  { id: "chk_2",  category: "Checkout & Payments",     feature: "Vaulted credit cards",                                     provider: "Shopify" },
-  { id: "chk_3",  category: "Checkout & Payments",     feature: "ACH / bank transfer payment",                              provider: "Shopify" },
-  { id: "chk_4",  category: "Checkout & Payments",     feature: "Tax exemption",                                            provider: "Shopify" },
-  { id: "chk_5",  category: "Checkout & Payments",     feature: "Basic checkout customization via Shopify Functions",       provider: "Shopify" },
-  { id: "chk_6",  category: "Checkout & Payments",     feature: "Multiple saved shipping addresses per location",           provider: "Extend",  app: "Extend B2B Address Book" },
-  { id: "chk_7",  category: "Checkout & Payments",     feature: "B2B checkout with PO number on POS",                      provider: "Extend",  app: "Extend POS for B2B" },
-  { id: "chk_8",  category: "Checkout & Payments",     feature: "Credit limit enforcement",                                 provider: "Codup" },
-  { id: "chk_9",  category: "Checkout & Payments",     feature: "ERP-linked invoice-based billing",                        provider: "Codup" },
-  { id: "chk_10", category: "Checkout & Payments",     feature: "Multi-step checkout approval flow",                        provider: "Codup" },
-  { id: "chk_11", category: "Checkout & Payments",     feature: "Custom checkout fields beyond PO number",                  provider: "Codup" },
-  { id: "chk_12", category: "Checkout & Payments",     feature: "Tax exemption certificate upload and validation",          provider: "Codup" },
-  { id: "chk_13", category: "Checkout & Payments",     feature: "Deferred payment / pay-later workflow",                   provider: "Codup" },
+      // Some feature names might contain commas — join excess columns back into
+      // the feature field to be safe (feature is the second column, idx 1):
+      const totalCols = headers.length;
+      const overflow = cols.length - totalCols;
+      if (overflow > 0) {
+        const featureParts = cols.splice(idx.feature, overflow + 1);
+        cols.splice(idx.feature, 0, featureParts.join(','));
+      }
 
-  // INVENTORY & FULFILLMENT
-  { id: "inv_1",  category: "Inventory & Fulfillment", feature: "Real-time inventory display on storefront",                provider: "Shopify" },
-  { id: "inv_2",  category: "Inventory & Fulfillment", feature: "Multi-location inventory visibility",                      provider: "Shopify" },
-  { id: "inv_3",  category: "Inventory & Fulfillment", feature: "Basic backorder / pre-order settings",                     provider: "Shopify" },
-  { id: "inv_4",  category: "Inventory & Fulfillment", feature: "Basic shipping rate rules",                                provider: "Shopify" },
-  { id: "inv_5",  category: "Inventory & Fulfillment", feature: "Real-time stock in product order tables",                  provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "inv_6",  category: "Inventory & Fulfillment", feature: "Will-call / custom delivery on POS draft orders",         provider: "Extend",  app: "Extend POS for B2B" },
-  { id: "inv_7",  category: "Inventory & Fulfillment", feature: "AI-based inventory forecasting",                           provider: "Extend",  app: "Extend Inventory Forecast AI" },
-  { id: "inv_8",  category: "Inventory & Fulfillment", feature: "WMS integration",                                          provider: "Codup" },
-  { id: "inv_9",  category: "Inventory & Fulfillment", feature: "Freight / LTL shipping rules",                             provider: "Codup" },
-  { id: "inv_10", category: "Inventory & Fulfillment", feature: "Custom fulfillment routing (warehouse selection logic)",   provider: "Codup" },
-  { id: "inv_11", category: "Inventory & Fulfillment", feature: "Lot / batch tracking",                                     provider: "Codup" },
-  { id: "inv_12", category: "Inventory & Fulfillment", feature: "Available-to-promise (ATP) from ERP",                     provider: "Codup" },
-  { id: "inv_13", category: "Inventory & Fulfillment", feature: "Delivery window / scheduled delivery booking",             provider: "Codup" },
-  { id: "inv_14", category: "Inventory & Fulfillment", feature: "Backorder notifications to buyer",                         provider: "Codup" },
+      const provider = cols[idx.provider] as Provider;
+      const app = idx.app >= 0 ? cols[idx.app] || undefined : undefined;
 
-  // BUYER PORTAL
-  { id: "por_1",  category: "Buyer Portal",            feature: "Order history",                                            provider: "Shopify" },
-  { id: "por_2",  category: "Buyer Portal",            feature: "Basic account management",                                 provider: "Shopify" },
-  { id: "por_3",  category: "Buyer Portal",            feature: "Reorder from history (basic)",                             provider: "Shopify" },
-  { id: "por_4",  category: "Buyer Portal",            feature: "Shipment tracking via order status page",                  provider: "Shopify" },
-  { id: "por_5",  category: "Buyer Portal",            feature: "Basic invoice / order summary view",                       provider: "Shopify" },
-  { id: "por_6",  category: "Buyer Portal",            feature: "Multiple saved shipping addresses",                        provider: "Extend",  app: "Extend B2B Address Book" },
-  { id: "por_7",  category: "Buyer Portal",            feature: "Role-based account access for buying team",                provider: "Extend",  app: "Extend B2B Buying" },
-  { id: "por_8",  category: "Buyer Portal",            feature: "Dealer / stockist locator page",                           provider: "Extend",  app: "Extend Dealer Locator" },
-  { id: "por_9",  category: "Buyer Portal",            feature: "Fully branded custom buyer portal UI",                     provider: "Codup" },
-  { id: "por_10", category: "Buyer Portal",            feature: "Account statement and balance view",                       provider: "Codup" },
-  { id: "por_11", category: "Buyer Portal",            feature: "Credit balance / credit limit display",                    provider: "Codup" },
-  { id: "por_12", category: "Buyer Portal",            feature: "Invoice PDF download",                                     provider: "Codup" },
-  { id: "por_13", category: "Buyer Portal",            feature: "Document library (SDS / spec sheets / certs)",             provider: "Codup" },
-  { id: "por_14", category: "Buyer Portal",            feature: "Saved order templates in portal",                          provider: "Codup" },
-  { id: "por_15", category: "Buyer Portal",            feature: "Rep-to-buyer messaging",                                   provider: "Codup" },
-  { id: "por_16", category: "Buyer Portal",            feature: "Custom account dashboard",                                 provider: "Codup" },
+      return {
+        id:       cols[idx.id],
+        feature:  cols[idx.feature],
+        category: cols[idx.category],
+        provider,
+        ...(app ? { app } : {}),
+      } satisfies Feature;
+    });
+}
 
-  // SALES & PROMOTIONS
-  { id: "sal_1",  category: "Sales & Promotions",      feature: "Basic discount codes",                                     provider: "Shopify" },
-  { id: "sal_2",  category: "Sales & Promotions",      feature: "Automatic discounts",                                      provider: "Shopify" },
-  { id: "sal_3",  category: "Sales & Promotions",      feature: "Draft order discounts (manually applied)",                 provider: "Shopify" },
-  { id: "sal_4",  category: "Sales & Promotions",      feature: "Shopify Flow automations",                                 provider: "Shopify" },
-  { id: "sal_5",  category: "Sales & Promotions",      feature: "B2B order tagging for reporting via POS",                  provider: "Extend",  app: "Extend POS for B2B" },
-  { id: "sal_6",  category: "Sales & Promotions",      feature: "Volume pricing enforcement at trade counter (POS)",        provider: "Extend",  app: "Extend POS for B2B" },
-  { id: "sal_7",  category: "Sales & Promotions",      feature: "Rep-assisted ordering portal",                             provider: "Codup" },
-  { id: "sal_8",  category: "Sales & Promotions",      feature: "Customer impersonation by sales reps",                     provider: "Codup" },
-  { id: "sal_9",  category: "Sales & Promotions",      feature: "Territory management and rep assignment",                  provider: "Codup" },
-  { id: "sal_10", category: "Sales & Promotions",      feature: "Trade-specific promotions and pricing windows",            provider: "Codup" },
-  { id: "sal_11", category: "Sales & Promotions",      feature: "Rebate program management",                                provider: "Codup" },
-  { id: "sal_12", category: "Sales & Promotions",      feature: "Co-op advertising / marketing fund tracking",              provider: "Codup" },
-  { id: "sal_13", category: "Sales & Promotions",      feature: "Sales rep commission tracking",                            provider: "Codup" },
-  { id: "sal_14", category: "Sales & Promotions",      feature: "Sales agent dashboard",                                    provider: "Codup" },
+// ── Exports ───────────────────────────────────────────────────────────────────
 
-  // INTEGRATIONS & ANALYTICS
-  { id: "int_1",  category: "Integrations & Analytics",feature: "Shopify Analytics (standard reporting)",                  provider: "Shopify" },
-  { id: "int_2",  category: "Integrations & Analytics",feature: "REST and GraphQL APIs",                                   provider: "Shopify" },
-  { id: "int_3",  category: "Integrations & Analytics",feature: "Webhooks",                                                provider: "Shopify" },
-  { id: "int_4",  category: "Integrations & Analytics",feature: "Shopify Markets (multi-region / international)",          provider: "Shopify" },
-  { id: "int_5",  category: "Integrations & Analytics",feature: "Native app ecosystem",                                    provider: "Shopify" },
-  { id: "int_6",  category: "Integrations & Analytics",feature: "B2B order data via Extend app tagging",                   provider: "Extend",  app: "Extend POS for B2B" },
-  { id: "int_7",  category: "Integrations & Analytics",feature: "AI inventory forecasting integration",                    provider: "Extend",  app: "Extend Inventory Forecast AI" },
-  { id: "int_8",  category: "Integrations & Analytics",feature: "ERP integration (NetSuite / SAP / Brightpearl)",          provider: "Codup" },
-  { id: "int_9",  category: "Integrations & Analytics",feature: "CRM integration (HubSpot / Salesforce)",                  provider: "Codup" },
-  { id: "int_10", category: "Integrations & Analytics",feature: "EDI (850 / 855 / 856 / 810)",                             provider: "Codup" },
-  { id: "int_11", category: "Integrations & Analytics",feature: "WMS integration",                                         provider: "Codup" },
-  { id: "int_12", category: "Integrations & Analytics",feature: "OMS integration",                                         provider: "Codup" },
-  { id: "int_13", category: "Integrations & Analytics",feature: "PIM integration",                                         provider: "Codup" },
-  { id: "int_14", category: "Integrations & Analytics",feature: "SSO (SAML / OIDC)",                                       provider: "Codup" },
-  { id: "int_15", category: "Integrations & Analytics",feature: "Custom B2B analytics dashboards",                         provider: "Codup" },
-  { id: "int_16", category: "Integrations & Analytics",feature: "Rep performance reporting",                                provider: "Codup" },
-  { id: "int_17", category: "Integrations & Analytics",feature: "Buyer behavior analytics (reorder frequency / CLV)",      provider: "Codup" },
-  { id: "int_18", category: "Integrations & Analytics",feature: "Custom webhook pipelines",                                 provider: "Codup" },
-];
+export const FEATURES: Feature[] = parseFeatureCSV(csvRaw);
 
-export const CATEGORIES = [
-  "Catalog & Pricing",
-  "Ordering",
-  "Accounts & Permissions",
-  "Checkout & Payments",
-  "Inventory & Fulfillment",
-  "Buyer Portal",
-  "Sales & Promotions",
-  "Integrations & Analytics",
-] as const;
+// Category order is derived from the CSV (first-seen order), not hardcoded
+export const CATEGORIES: string[] = FEATURES.reduce<string[]>((acc, f) => {
+  if (!acc.includes(f.category)) acc.push(f.category);
+  return acc;
+}, []);
 
 export const APP_STORE_LINKS: Record<string, string> = {
-  "Extend B2B Buying":           "https://apps.shopify.com/quick-order-b2b-and-wholesale",
-  "Extend POS for B2B":          "https://apps.shopify.com/pos-for-b2b-and-wholesale",
-  "Extend B2B Address Book":     "https://apps.shopify.com/extend-b2b-address-book",
-  "Extend Product Configurator": "https://apps.shopify.com/b2b-product-configurator",
-  "Extend B2B Onboarding":       "https://apps.shopify.com/extend-b2b-onboarding",
-  "Extend Dealer Locator":       "https://extendcommerce.com",
-  "Extend Inventory Forecast AI":"https://extendcommerce.com",
+  'Extend B2B Buying':            'https://apps.shopify.com/quick-order-b2b-and-wholesale',
+  'Extend POS for B2B':           'https://apps.shopify.com/pos-for-b2b-and-wholesale',
+  'Extend B2B Address Book':      'https://apps.shopify.com/extend-b2b-address-book',
+  'Extend Product Configurator':  'https://apps.shopify.com/b2b-product-configurator',
+  'Extend B2B Onboarding':        'https://apps.shopify.com/extend-b2b-onboarding',
+  'Extend Dealer Locator':        'https://extendcommerce.com',
+  'Extend Inventory Forecast AI': 'https://extendcommerce.com',
 };

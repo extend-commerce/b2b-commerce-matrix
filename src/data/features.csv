@@ -1,0 +1,122 @@
+id,feature,category,provider,app
+cat_1,Company-specific price lists,Catalog & Pricing,Shopify,
+cat_2,Volume / tiered pricing breaks,Catalog & Pricing,Shopify,
+cat_3,Quantity rules (MOQ and case pack multiples),Catalog & Pricing,Shopify,
+cat_4,Multiple catalogs (unlimited on Plus),Catalog & Pricing,Shopify,
+cat_5,Restricted catalog visibility per account,Catalog & Pricing,Shopify,
+cat_6,Currency support via Shopify Markets,Catalog & Pricing,Shopify,
+cat_7,Product tables with metafields and attributes,Catalog & Pricing,Extend,Extend B2B Buying
+cat_8,Variant tables on product detail pages,Catalog & Pricing,Extend,Extend B2B Buying
+cat_9,Attribute display (specs / dimensions / UOM),Catalog & Pricing,Extend,Extend B2B Buying
+cat_10,Catalog-synced pricing in quick order tables,Catalog & Pricing,Extend,Extend B2B Buying
+cat_11,Product configurator (SKU-level config / parts / rules),Catalog & Pricing,Extend,Extend Product Configurator
+cat_12,Contract pricing engine (outside of catalogs),Catalog & Pricing,Codup,
+cat_13,ERP-synced / real-time pricing pull,Catalog & Pricing,Codup,
+cat_14,Dynamic pricing rules (complex conditional logic),Catalog & Pricing,Codup,
+cat_15,Hidden pricing for guest or unapproved visitors,Catalog & Pricing,Codup,
+ord_1,Draft orders,Ordering,Shopify,
+ord_2,PO number field at checkout,Ordering,Shopify,
+ord_3,Basic reorder from order history,Ordering,Shopify,
+ord_4,Quick order / product table ordering,Ordering,Extend,Extend B2B Buying
+ord_5,CSV order upload,Ordering,Extend,Extend B2B Buying
+ord_6,Bulk add-to-cart (multi-SKU / multi-qty),Ordering,Extend,Extend B2B Buying
+ord_7,Multi-cart (save multiple named carts),Ordering,Extend,Extend B2B Buying
+ord_8,Shared / collaborative carts (per company),Ordering,Extend,Extend B2B Buying
+ord_9,Cart naming and organization,Ordering,Extend,Extend B2B Buying
+ord_10,Checkout restriction by cart value or category,Ordering,Extend,Extend B2B Buying
+ord_11,B2B ordering at POS (trade counter / showroom),Ordering,Extend,Extend POS for B2B
+ord_12,Standing / scheduled repeat orders,Ordering,Codup,
+ord_13,Order templates with pre-set SKU lists,Ordering,Codup,
+ord_14,EDI order ingestion (850/855),Ordering,Codup,
+ord_15,API-based order injection from external systems,Ordering,Codup,
+ord_16,Configure-to-order / CPQ beyond configurator,Ordering,Codup,
+acc_1,Company profiles,Accounts & Permissions,Shopify,
+acc_2,Company locations (multi-location per account),Accounts & Permissions,Shopify,
+acc_3,Parent / child company hierarchy,Accounts & Permissions,Shopify,
+acc_4,Basic buyer roles (admin-assigned),Accounts & Permissions,Shopify,
+acc_5,B2B login via customer accounts,Accounts & Permissions,Shopify,
+acc_6,Company onboarding form with admin approval,Accounts & Permissions,Extend,Extend B2B Onboarding
+acc_7,Location management during onboarding,Accounts & Permissions,Extend,Extend B2B Onboarding
+acc_8,Role-based cart access (Viewer / Editor / Approver),Accounts & Permissions,Extend,Extend B2B Buying
+acc_9,Cart-level approval workflows,Accounts & Permissions,Extend,Extend B2B Buying
+acc_10,Advanced multi-step purchase approval workflows,Accounts & Permissions,Codup,
+acc_11,Territory / region-based account assignment,Accounts & Permissions,Codup,
+acc_12,Rep-to-account assignment,Accounts & Permissions,Codup,
+acc_13,Enterprise company hierarchies (beyond 2 levels),Accounts & Permissions,Codup,
+acc_14,SSO / SAML / OIDC identity integration,Accounts & Permissions,Codup,
+acc_15,Custom account permission rules,Accounts & Permissions,Codup,
+chk_1,Payment terms (Net 30 / 60 / 90),Checkout & Payments,Shopify,
+chk_2,Vaulted credit cards,Checkout & Payments,Shopify,
+chk_3,ACH / bank transfer payment,Checkout & Payments,Shopify,
+chk_4,Tax exemption,Checkout & Payments,Shopify,
+chk_5,Basic checkout customization via Shopify Functions,Checkout & Payments,Shopify,
+chk_6,Multiple saved shipping addresses per location,Checkout & Payments,Extend,Extend B2B Address Book
+chk_7,B2B checkout with PO number on POS,Checkout & Payments,Extend,Extend POS for B2B
+chk_8,Credit limit enforcement,Checkout & Payments,Codup,
+chk_9,ERP-linked invoice-based billing,Checkout & Payments,Codup,
+chk_10,Multi-step checkout approval flow,Checkout & Payments,Codup,
+chk_11,Custom checkout fields beyond PO number,Checkout & Payments,Codup,
+chk_12,Tax exemption certificate upload and validation,Checkout & Payments,Codup,
+chk_13,Deferred payment / pay-later workflow,Checkout & Payments,Codup,
+inv_1,Real-time inventory display on storefront,Inventory & Fulfillment,Shopify,
+inv_2,Multi-location inventory visibility,Inventory & Fulfillment,Shopify,
+inv_3,Basic backorder / pre-order settings,Inventory & Fulfillment,Shopify,
+inv_4,Basic shipping rate rules,Inventory & Fulfillment,Shopify,
+inv_5,Real-time stock in product order tables,Inventory & Fulfillment,Extend,Extend B2B Buying
+inv_6,Will-call / custom delivery on POS draft orders,Inventory & Fulfillment,Extend,Extend POS for B2B
+inv_7,AI-based inventory forecasting,Inventory & Fulfillment,Extend,Extend Inventory Forecast AI
+inv_8,WMS integration,Inventory & Fulfillment,Codup,
+inv_9,Freight / LTL shipping rules,Inventory & Fulfillment,Codup,
+inv_10,Custom fulfillment routing (warehouse selection logic),Inventory & Fulfillment,Codup,
+inv_11,Lot / batch tracking,Inventory & Fulfillment,Codup,
+inv_12,Available-to-promise (ATP) from ERP,Inventory & Fulfillment,Codup,
+inv_13,Delivery window / scheduled delivery booking,Inventory & Fulfillment,Codup,
+inv_14,Backorder notifications to buyer,Inventory & Fulfillment,Codup,
+por_1,Order history,Buyer Portal,Shopify,
+por_2,Basic account management,Buyer Portal,Shopify,
+por_3,Reorder from history (basic),Buyer Portal,Shopify,
+por_4,Shipment tracking via order status page,Buyer Portal,Shopify,
+por_5,Basic invoice / order summary view,Buyer Portal,Shopify,
+por_6,Multiple saved shipping addresses,Buyer Portal,Extend,Extend B2B Address Book
+por_7,Role-based account access for buying team,Buyer Portal,Extend,Extend B2B Buying
+por_8,Dealer / stockist locator page,Buyer Portal,Extend,Extend Dealer Locator
+por_9,Fully branded custom buyer portal UI,Buyer Portal,Codup,
+por_10,Account statement and balance view,Buyer Portal,Codup,
+por_11,Credit balance / credit limit display,Buyer Portal,Codup,
+por_12,Invoice PDF download,Buyer Portal,Codup,
+por_13,Document library (SDS / spec sheets / certs),Buyer Portal,Codup,
+por_14,Saved order templates in portal,Buyer Portal,Codup,
+por_15,Rep-to-buyer messaging,Buyer Portal,Codup,
+por_16,Custom account dashboard,Buyer Portal,Codup,
+sal_1,Basic discount codes,Sales & Promotions,Shopify,
+sal_2,Automatic discounts,Sales & Promotions,Shopify,
+sal_3,Draft order discounts (manually applied),Sales & Promotions,Shopify,
+sal_4,Shopify Flow automations,Sales & Promotions,Shopify,
+sal_5,B2B order tagging for reporting via POS,Sales & Promotions,Extend,Extend POS for B2B
+sal_6,Volume pricing enforcement at trade counter (POS),Sales & Promotions,Extend,Extend POS for B2B
+sal_7,Rep-assisted ordering portal,Sales & Promotions,Codup,
+sal_8,Customer impersonation by sales reps,Sales & Promotions,Codup,
+sal_9,Territory management and rep assignment,Sales & Promotions,Codup,
+sal_10,Trade-specific promotions and pricing windows,Sales & Promotions,Codup,
+sal_11,Rebate program management,Sales & Promotions,Codup,
+sal_12,Co-op advertising / marketing fund tracking,Sales & Promotions,Codup,
+sal_13,Sales rep commission tracking,Sales & Promotions,Codup,
+sal_14,Sales agent dashboard,Sales & Promotions,Codup,
+int_1,Shopify Analytics (standard reporting),Integrations & Analytics,Shopify,
+int_2,REST and GraphQL APIs,Integrations & Analytics,Shopify,
+int_3,Webhooks,Integrations & Analytics,Shopify,
+int_4,Shopify Markets (multi-region / international),Integrations & Analytics,Shopify,
+int_5,Native app ecosystem,Integrations & Analytics,Shopify,
+int_6,B2B order data via Extend app tagging,Integrations & Analytics,Extend,Extend POS for B2B
+int_7,AI inventory forecasting integration,Integrations & Analytics,Extend,Extend Inventory Forecast AI
+int_8,ERP integration (NetSuite / SAP / Brightpearl),Integrations & Analytics,Codup,
+int_9,CRM integration (HubSpot / Salesforce),Integrations & Analytics,Codup,
+int_10,EDI (850 / 855 / 856 / 810),Integrations & Analytics,Codup,
+int_11,WMS integration,Integrations & Analytics,Codup,
+int_12,OMS integration,Integrations & Analytics,Codup,
+int_13,PIM integration,Integrations & Analytics,Codup,
+int_14,SSO (SAML / OIDC),Integrations & Analytics,Codup,
+int_15,Custom B2B analytics dashboards,Integrations & Analytics,Codup,
+int_16,Rep performance reporting,Integrations & Analytics,Codup,
+int_17,Buyer behavior analytics (reorder frequency / CLV),Integrations & Analytics,Codup,
+int_18,Custom webhook pipelines,Integrations & Analytics,Codup,
