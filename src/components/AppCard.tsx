@@ -9,8 +9,8 @@ export default function AppCard({ appName, features, appStoreUrl, battleCardUrl 
   return (
     <div
       style={{
-        background: '#111827',
-        border: '1px solid rgba(255,255,255,0.08)',
+        background: '#FFFFFF',
+        border: '1px solid rgba(15,23,42,0.08)',
         borderRadius: 12,
         padding: 20,
         marginBottom: 12,
@@ -18,7 +18,7 @@ export default function AppCard({ appName, features, appStoreUrl, battleCardUrl 
     >
       {/* Top row */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <span style={{ color: '#fff', fontSize: 15, fontWeight: 600 }}>{appName}</span>
+        <span style={{ color: 'var(--text-primary)', fontSize: 15, fontWeight: 600 }}>{appName}</span>
         <span
           style={{
             background: 'rgba(37,99,235,0.12)',
@@ -41,7 +41,7 @@ export default function AppCard({ appName, features, appStoreUrl, battleCardUrl 
               display: 'flex',
               alignItems: 'center',
               padding: '7px 0 7px 12px',
-              borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.04)',
+              borderTop: i === 0 ? 'none' : '1px solid rgba(15,23,42,0.05)',
             }}
           >
             <span
@@ -54,7 +54,7 @@ export default function AppCard({ appName, features, appStoreUrl, battleCardUrl 
                 marginRight: 10,
               }}
             />
-            <span style={{ color: '#CBD5E1', fontSize: 13 }}>{feature}</span>
+            <span style={{ color: 'var(--text-secondary)', fontSize: 13 }}>{feature}</span>
           </div>
         ))}
       </div>
@@ -82,8 +82,8 @@ export default function AppCard({ appName, features, appStoreUrl, battleCardUrl 
         <button
           onClick={() => window.open(battleCardUrl, '_blank')}
           style={{
-            border: '1px solid rgba(255,255,255,0.12)',
-            color: '#94A3B8',
+            border: '1px solid rgba(15,23,42,0.15)',
+            color: 'var(--text-muted)',
             background: 'transparent',
             borderRadius: 6,
             fontSize: 12,

@@ -28,8 +28,8 @@ const sectionVariant = (index: number) => ({
 });
 
 const cardStyle: React.CSSProperties = {
-  background: '#0F172A',
-  border: '1px solid rgba(255,255,255,0.07)',
+  background: '#FFFFFF',
+  border: '1px solid var(--border)',
   borderRadius: 12,
   padding: 20,
 };
@@ -49,7 +49,7 @@ function DotRow({
         display: 'flex',
         alignItems: 'center',
         padding: '8px 0',
-        borderTop: isFirst ? 'none' : '1px solid rgba(255,255,255,0.04)',
+        borderTop: isFirst ? 'none' : '1px solid var(--border)',
       }}
     >
       <span
@@ -62,7 +62,7 @@ function DotRow({
           marginRight: 10,
         }}
       />
-      <span style={{ color: '#CBD5E1', fontSize: 13 }}>{feature}</span>
+      <span style={{ color: 'var(--text-secondary)', fontSize: 13 }}>{feature}</span>
     </div>
   );
 }
@@ -123,7 +123,7 @@ export default function SolutionSummary({
       <div
         onClick={onBack}
         style={{
-          color: '#94A3B8',
+          color: '#64748B',
           fontSize: 14,
           cursor: 'pointer',
           marginBottom: 32,
@@ -131,8 +131,8 @@ export default function SolutionSummary({
           textDecoration: 'none',
           transition: 'color 0.15s',
         }}
-        onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-        onMouseLeave={e => (e.currentTarget.style.color = '#94A3B8')}
+        onMouseEnter={e => (e.currentTarget.style.color = '#0F172A')}
+        onMouseLeave={e => (e.currentTarget.style.color = '#64748B')}
       >
         ← Edit selections
       </div>
@@ -140,7 +140,7 @@ export default function SolutionSummary({
       {/* Header */}
       <h1
         style={{
-          color: '#fff',
+          color: 'var(--text-primary)',
           fontSize: 32,
           fontWeight: 700,
           letterSpacing: '-0.02em',
@@ -149,7 +149,7 @@ export default function SolutionSummary({
       >
         Your B2B Commerce Plan
       </h1>
-      <p style={{ color: '#94A3B8', fontSize: 15, margin: '0 0 40px' }}>{subtitle}</p>
+      <p style={{ color: 'var(--text-muted)', fontSize: 15, margin: '0 0 40px' }}>{subtitle}</p>
 
       {/* Sections container */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
@@ -159,7 +159,7 @@ export default function SolutionSummary({
             <div style={cardStyle}>
               {/* Section header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: 11, letterSpacing: '0.12em', color: '#475569', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: 11, letterSpacing: '0.12em', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
                   <span style={{ color: '#16a34a' }}>✦</span> SHOPIFY NATIVE
                 </span>
                 <span
@@ -176,7 +176,7 @@ export default function SolutionSummary({
               </div>
 
               {/* Sub-copy */}
-              <p style={{ fontSize: 14, color: '#94A3B8', margin: '8px 0 16px' }}>
+              <p style={{ fontSize: 14, color: 'var(--text-muted)', margin: '8px 0 16px' }}>
                 These features are built into Shopify Plus. No additional apps required — just configuration.
               </p>
 
@@ -210,7 +210,7 @@ export default function SolutionSummary({
                 {extendFeatures.length} feature{extendFeatures.length !== 1 ? 's' : ''}
               </span>
             </div>
-            <p style={{ fontSize: 14, color: '#94A3B8', margin: '0 0 16px' }}>
+            <p style={{ fontSize: 14, color: 'var(--text-muted)', margin: '0 0 16px' }}>
               These features are delivered by Extend Commerce apps — installable from the Shopify App Store with no custom development needed.
             </p>
 
@@ -233,7 +233,7 @@ export default function SolutionSummary({
             <div style={cardStyle}>
               {/* Section header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: 11, letterSpacing: '0.12em', color: '#475569', textTransform: 'uppercase' }}>
+                <span style={{ fontSize: 11, letterSpacing: '0.12em', color: 'var(--text-muted)', textTransform: 'uppercase' }}>
                   <span style={{ color: '#ea580c' }}>✦</span> CODUP CUSTOM DEVELOPMENT
                 </span>
                 <span
@@ -250,7 +250,7 @@ export default function SolutionSummary({
               </div>
 
               {/* Sub-copy */}
-              <p style={{ fontSize: 14, color: '#94A3B8', margin: '8px 0 16px' }}>
+              <p style={{ fontSize: 14, color: 'var(--text-muted)', margin: '8px 0 16px' }}>
                 These features require custom implementation. Codup's team scopes, builds, and maintains this work as part of a larger engagement — typically alongside a Shopify Plus setup.
               </p>
 
@@ -271,7 +271,7 @@ export default function SolutionSummary({
                   marginTop: 16,
                 }}
               >
-                <p style={{ fontSize: 13, color: '#94A3B8', margin: 0 }}>
+                <p style={{ fontSize: 13, color: 'var(--text-muted)', margin: 0 }}>
                   Custom development is scoped per project. These are typically part of a larger Shopify Plus engagement.
                 </p>
               </div>
@@ -284,9 +284,9 @@ export default function SolutionSummary({
           <motion.div {...sectionVariant(notesIdx)}>
             <div
               style={{
-                background: '#111827',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderLeft: '3px solid rgba(255,255,255,0.20)',
+                background: '#FFFFFF',
+                border: '1px solid var(--border)',
+                borderLeft: '3px solid rgba(15,23,42,0.20)',
                 borderRadius: 8,
                 padding: '16px 20px',
               }}
@@ -295,14 +295,14 @@ export default function SolutionSummary({
                 style={{
                   fontSize: 11,
                   textTransform: 'uppercase',
-                  color: '#475569',
+                  color: 'var(--text-muted)',
                   marginBottom: 8,
                   letterSpacing: '0.08em',
                 }}
               >
                 YOUR NOTES
               </div>
-              <p style={{ color: '#CBD5E1', fontSize: 14, margin: 0, whiteSpace: 'pre-wrap' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: 14, margin: 0, whiteSpace: 'pre-wrap' }}>
                 {notes}
               </p>
             </div>
@@ -314,7 +314,7 @@ export default function SolutionSummary({
           <div style={{ maxWidth: 480, margin: '48px auto 0', textAlign: 'center' }}>
             <h2
               style={{
-                color: '#fff',
+                color: 'var(--text-primary)',
                 fontSize: 20,
                 fontWeight: 600,
                 margin: '0 0 20px',
@@ -348,8 +348,8 @@ export default function SolutionSummary({
                 onClick={() => window.open('https://extendcommerce.com/battle-cards', '_blank')}
                 style={{
                   background: 'transparent',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  color: '#94A3B8',
+                  border: '1px solid var(--border-strong)',
+                  color: 'var(--text-muted)',
                   height: 44,
                   borderRadius: 10,
                   flex: 1,
@@ -364,7 +364,7 @@ export default function SolutionSummary({
                 View Battle Cards →
               </button>
             </div>
-            <p style={{ fontSize: 12, color: '#475569', marginTop: 16, textAlign: 'center' }}>
+            <p style={{ fontSize: 12, color: 'var(--text-faint)', marginTop: 16, textAlign: 'center' }}>
               Powered by Extend Commerce × Codup
             </p>
           </div>

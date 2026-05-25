@@ -1,33 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --bg-base:       #080C14;
-  --bg-surface:    #0F172A;
-  --bg-card:       #111827;
-  --border:        rgba(255,255,255,0.07);
-  --green:         #16a34a;
-  --green-tint:    rgba(22,163,74,0.10);
-  --green-border:  rgba(22,163,74,0.30);
-  --blue:          #2563eb;
-  --blue-tint:     rgba(37,99,235,0.10);
-  --blue-border:   rgba(37,99,235,0.30);
-  --orange:        #ea580c;
-  --orange-tint:   rgba(234,88,12,0.10);
-  --orange-border: rgba(234,88,12,0.30);
-  --text-primary:  #F8FAFC;
-  --text-muted:    #94A3B8;
-  --text-faint:    #475569;
+  /* Backgrounds */
+  --bg-base:        #F1F5F9;
+  --bg-surface:     #FFFFFF;
+  --bg-card:        #FFFFFF;
+  --bg-header:      #0F172A;
+  --bg-input:       #FFFFFF;
+  --bg-elevated:    #F8FAFC;
+
+  /* Borders */
+  --border:         rgba(15, 23, 42, 0.09);
+  --border-strong:  rgba(15, 23, 42, 0.16);
+
+  /* Provider colors — keep the same */
+  --green:          #16a34a;
+  --green-tint:     rgba(22, 163, 74, 0.08);
+  --green-border:   rgba(22, 163, 74, 0.25);
+
+  --blue:           #2563eb;
+  --blue-tint:      rgba(37, 99, 235, 0.08);
+  --blue-border:    rgba(37, 99, 235, 0.25);
+
+  --orange:         #ea580c;
+  --orange-tint:    rgba(234, 88, 12, 0.08);
+  --orange-border:  rgba(234, 88, 12, 0.25);
+
+  /* Typography */
+  --text-primary:   #0F172A;
+  --text-secondary: #334155;
+  --text-muted:     #64748B;
+  --text-faint:     #94A3B8;
 }
 
 * { box-sizing: border-box; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--bg-base);
   color: var(--text-primary);
   margin: 0;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 @keyframes shimmer {
@@ -41,65 +55,51 @@ body {
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* ── Layout helpers ─────────────────────────────────── */
+/* ── Layout ─────────────────────────── */
 .app-content { position: relative; z-index: 1; }
 
 .planner-input-wrap {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 24px 24px 16px;
+  padding: 24px 24px 0;
 }
 
 .legend-bar {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 24px 12px;
+  padding: 10px 24px 0;
   display: flex;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
 }
 
-.planner-body {
+.summary-bar-wrap {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 24px 40px;
-  display: flex;
-  align-items: flex-start;
-}
-
-.matrix-wrap { flex: 1; min-width: 0; }
-
-.sidebar-wrap {
-  width: 264px;
-  flex-shrink: 0;
+  padding: 12px 24px;
   position: sticky;
-  top: 72px;
-  max-height: calc(100vh - 88px);
-  overflow-y: auto;
+  top: 56px;
+  z-index: 9;
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border);
 }
 
-/* Tablet */
-@media (max-width: 1279px) {
-  .planner-body { flex-direction: column; }
-  .sidebar-wrap {
-    width: 100%;
-    position: static;
-    max-height: none;
-    overflow-y: visible;
-    margin-top: 16px;
-  }
+.matrix-wrap-full {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px 24px 40px;
 }
 
 /* Mobile */
 @media (max-width: 767px) {
-  .planner-input-wrap { padding: 16px 16px 12px; }
-  .planner-body { padding: 0 16px 100px; }
-  .legend-bar { padding: 0 16px 12px; }
+  .planner-input-wrap { padding: 16px 16px 0; }
+  .legend-bar         { padding: 10px 16px 0; }
+  .summary-bar-wrap   { padding: 10px 16px; }
+  .matrix-wrap-full   { padding: 16px 16px 100px; }
 }
 
 /* Mobile floating CTA */

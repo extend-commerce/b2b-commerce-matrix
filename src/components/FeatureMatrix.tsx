@@ -14,10 +14,10 @@ const scrollbarStyles = `
     height: 4px;
   }
   .feature-matrix-scroll::-webkit-scrollbar-track {
-    background: #0F172A;
+    background: #F1F5F9;
   }
   .feature-matrix-scroll::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.12);
+    background: rgba(15,23,42,0.15);
     border-radius: 2px;
   }
 `;
@@ -49,8 +49,8 @@ export function FeatureMatrix({ selectedFeatures, onToggle }: FeatureMatrixProps
           const isOpen = openCategory === category;
           return (
             <div key={category} style={{
-              background: '#0F172A',
-              border: '1px solid rgba(255,255,255,0.07)',
+              background: '#FFFFFF',
+              border: '1px solid rgba(15,23,42,0.08)',
               borderRadius: 8, overflow: 'hidden',
             }}>
               {/* Header row */}
@@ -61,20 +61,20 @@ export function FeatureMatrix({ selectedFeatures, onToggle }: FeatureMatrixProps
                   alignItems: 'center', padding: '12px 16px', cursor: 'pointer',
                 }}
               >
-                <span style={{ fontSize: 13, color: '#F1F5F9', fontWeight: 500 }}>
+                <span style={{ fontSize: 13, color: '#0F172A', fontWeight: 500 }}>
                   {category}
                 </span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   {selectedCount > 0 && (
                     <span style={{
-                      background: 'rgba(255,255,255,0.08)', color: '#94A3B8',
+                      background: 'rgba(37,99,235,0.08)', color: '#2563eb',
                       borderRadius: 100, padding: '2px 8px', fontSize: 11,
                     }}>
                       {selectedCount} selected
                     </span>
                   )}
                   <span style={{
-                    color: '#475569', fontSize: 12,
+                    color: '#94A3B8', fontSize: 12,
                     display: 'inline-block',
                     transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                     transition: 'transform 200ms ease',
@@ -89,7 +89,7 @@ export function FeatureMatrix({ selectedFeatures, onToggle }: FeatureMatrixProps
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                    style={{ overflow: 'hidden', borderTop: '1px solid rgba(255,255,255,0.06)' }}
+                    style={{ overflow: 'hidden', borderTop: '1px solid rgba(15,23,42,0.06)' }}
                   >
                     {catFeatures.map(feature => (
                       <FeatureCell
@@ -122,7 +122,7 @@ export function FeatureMatrix({ selectedFeatures, onToggle }: FeatureMatrixProps
         className="feature-matrix-scroll"
         style={{
           display: 'flex',
-          gap: '12px',
+          gap: '10px',
           overflowX: 'auto',
           paddingBottom: '16px',
         }}

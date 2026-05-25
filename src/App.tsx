@@ -1,16 +1,20 @@
 import { useAppState } from './hooks/useAppState';
 import { AIInputBar } from './components/AIInputBar';
 import FeatureMatrix from './components/FeatureMatrix';
-import SummaryPanel from './components/SummaryPanel';
+import SummaryBar from './components/SummaryBar';
 import SolutionSummary from './components/SolutionSummary';
 import EmailModal from './components/EmailModal';
 import './index.css';
 
-const PROVIDERS_LEGEND = [
-  { dot: '#16a34a', label: 'Shopify Native', sub: 'Included in Shopify Plus' },
-  { dot: '#2563eb', label: 'Extend Commerce', sub: 'App Store, no custom dev' },
-  { dot: '#ea580c', label: 'Codup Custom', sub: 'Custom implementation' },
-];
+function LegendItem({ color, label, sub }: { color: string; label: string; sub: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+      <div style={{ width: 8, height: 8, borderRadius: '50%', background: color, flexShrink: 0 }} />
+      <span style={{ fontSize: 12, color: '#334155', fontWeight: 600 }}>{label}</span>
+      <span style={{ fontSize: 12, color: '#94A3B8' }}>— {sub}</span>
+    </div>
+  );
+}
 
 export default function App() {
   const {
@@ -46,27 +50,14 @@ export default function App() {
         position: 'relative',
       }}
     >
-      {/* Radial gradient overlay */}
-      <div
-        style={{
-          position: 'fixed',
-          inset: 0,
-          background:
-            'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(37,99,235,0.07) 0%, transparent 70%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-
-      {/* Header */}
+      {/* Header — dark navy anchors the design */}
       <header
         style={{
           position: 'sticky',
           top: 0,
           zIndex: 10,
           height: 56,
-          background: 'rgba(8,12,20,0.85)',
-          backdropFilter: 'blur(12px)',
+          background: '#0F172A',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
         }}
       >
@@ -133,90 +124,35 @@ export default function App() {
       <main style={{ flex: 1 }}>
         {currentScreen === 'planner' ? (
           <div className="app-content">
-            {/* AI Input Bar */}
+            {/* AI Input */}
             <div className="planner-input-wrap">
               <AIInputBar onFeaturesIdentified={handleAIFeatures} />
             </div>
 
             {/* Legend bar */}
             <div className="legend-bar">
-              {PROVIDERS_LEGEND.map(({ dot, label, sub }) => (
-                <div
-                  key={label}
-                  style={{ display: 'flex', alignItems: 'center', gap: 6 }}
-                >
-                  <span
-                    style={{
-                      width: 8,
-                      height: 8,
-                      borderRadius: '50%',
-                      background: dot,
-                      display: 'inline-block',
-                      flexShrink: 0,
-                    }}
-                  />
-                  <span
-                    style={{
-                      fontSize: 12,
-                      color: '#94A3B8',
-                      lineHeight: 1,
-                    }}
-                  >
-                    <strong style={{ color: '#94A3B8', fontWeight: 500 }}>
-                      {label}
-                    </strong>{' '}
-                    — {sub}
-                  </span>
-                </div>
-              ))}
-
-              {/* Clear all — right-aligned */}
-              <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                {selectedFeatures.size > 0 && (
-                  <button
-                    onClick={clearAll}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      color: '#475569',
-                      fontSize: 12,
-                      cursor: 'pointer',
-                      padding: '2px 0',
-                      fontFamily: 'inherit',
-                      transition: 'color 0.15s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#94A3B8';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#475569';
-                    }}
-                  >
-                    Clear all
-                  </button>
-                )}
-              </div>
+              <LegendItem color="#16a34a" label="Shopify Native" sub="Included in Shopify Plus" />
+              <LegendItem color="#2563eb" label="Extend Commerce" sub="App Store, no custom dev" />
+              <LegendItem color="#ea580c" label="Codup Custom" sub="Custom implementation" />
             </div>
 
-            {/* Matrix + Sidebar */}
-            <div className="planner-body">
-              {/* Left: Matrix area */}
-              <div className="matrix-wrap">
-                <FeatureMatrix
-                  selectedFeatures={selectedFeatures}
-                  onToggle={toggleFeature}
-                />
-              </div>
+            {/* Sticky summary bar */}
+            <div className="summary-bar-wrap">
+              <SummaryBar
+                selectedFeatures={selectedFeatures}
+                notes={notes}
+                onNotesChange={setNotes}
+                onGenerate={() => setShowEmailModal(true)}
+                onClear={clearAll}
+              />
+            </div>
 
-              {/* Right: Sticky sidebar */}
-              <div className="sidebar-wrap">
-                <SummaryPanel
-                  selectedFeatures={selectedFeatures}
-                  notes={notes}
-                  onNotesChange={setNotes}
-                  onGenerate={() => setShowEmailModal(true)}
-                />
-              </div>
+            {/* Full-width matrix */}
+            <div className="matrix-wrap-full">
+              <FeatureMatrix
+                selectedFeatures={selectedFeatures}
+                onToggle={toggleFeature}
+              />
             </div>
 
             {/* Mobile floating CTA */}
@@ -240,12 +176,14 @@ export default function App() {
             )}
           </div>
         ) : (
-          <SolutionSummary
-            selectedFeatures={selectedFeatures}
-            notes={notes}
-            userName={userName}
-            onBack={() => setCurrentScreen('planner')}
-          />
+          <div style={{ background: 'var(--bg-base)', minHeight: '100vh' }}>
+            <SolutionSummary
+              selectedFeatures={selectedFeatures}
+              notes={notes}
+              userName={userName}
+              onBack={() => setCurrentScreen('planner')}
+            />
+          </div>
         )}
       </main>
 

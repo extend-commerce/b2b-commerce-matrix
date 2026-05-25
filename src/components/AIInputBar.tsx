@@ -41,10 +41,10 @@ export function AIInputBar({ onFeaturesIdentified }: AIInputBarProps) {
     alignItems: 'center',
     width: '100%',
     height: '56px',
-    background: '#111827',
+    background: '#FFFFFF',
     border: focused
       ? '1px solid rgba(37,99,235,0.50)'
-      : '1px solid rgba(255,255,255,0.10)',
+      : '1px solid rgba(15,23,42,0.12)',
     borderRadius: '12px',
     padding: '0 16px',
     boxShadow: focused ? '0 0 0 3px rgba(37,99,235,0.12)' : 'none',
@@ -55,7 +55,7 @@ export function AIInputBar({ onFeaturesIdentified }: AIInputBarProps) {
   const shimmerStyle: React.CSSProperties = loading
     ? {
         backgroundImage:
-          'linear-gradient(90deg, #111827 0%, #1e293b 50%, #111827 100%)',
+          'linear-gradient(90deg, #F8FAFC 0%, #FFFFFF 50%, #F8FAFC 100%)',
         backgroundSize: '200% 100%',
         animation: 'shimmer 1.5s infinite',
       }
@@ -93,7 +93,7 @@ export function AIInputBar({ onFeaturesIdentified }: AIInputBarProps) {
             background: 'transparent',
             border: 'none',
             outline: 'none',
-            color: '#F1F5F9',
+            color: '#0F172A',
             fontSize: '14px',
             fontStyle: isItalic ? 'italic' : 'normal',
             minWidth: 0,
@@ -105,7 +105,7 @@ export function AIInputBar({ onFeaturesIdentified }: AIInputBarProps) {
           style={{
             width: '1px',
             height: '24px',
-            background: 'rgba(255,255,255,0.08)',
+            background: 'rgba(15,23,42,0.08)',
             flexShrink: 0,
           }}
         />
@@ -145,7 +145,7 @@ export function AIInputBar({ onFeaturesIdentified }: AIInputBarProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             style={{
-              color: '#94A3B8',
+              color: '#64748B',
               fontSize: '12px',
               marginTop: '8px',
               marginLeft: '4px',

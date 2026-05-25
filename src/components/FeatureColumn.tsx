@@ -24,9 +24,9 @@ export function FeatureColumn({ category, features, selectedFeatures, onToggle }
     <div
       style={{
         flex: 1,
-        minWidth: '200px',
-        backgroundColor: '#0F172A',
-        border: '1px solid rgba(255,255,255,0.07)',
+        minWidth: '180px',
+        backgroundColor: '#FFFFFF',
+        border: '1px solid rgba(15,23,42,0.08)',
         borderRadius: '8px',
         overflow: 'hidden',
       }}
@@ -35,7 +35,7 @@ export function FeatureColumn({ category, features, selectedFeatures, onToggle }
       <div
         style={{
           padding: '12px 12px 8px 12px',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
+          borderBottom: '1px solid rgba(15,23,42,0.06)',
         }}
       >
         <div
@@ -43,7 +43,7 @@ export function FeatureColumn({ category, features, selectedFeatures, onToggle }
             fontSize: '11px',
             fontWeight: 500,
             letterSpacing: '0.08em',
-            color: '#475569',
+            color: '#94A3B8',
             textTransform: 'uppercase',
             marginBottom: '6px',
           }}

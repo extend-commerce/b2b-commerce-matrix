@@ -10,21 +10,21 @@ interface FeatureCellProps {
 const PROVIDER_COLORS = {
   Shopify: {
     border: '#16a34a',
-    tint: 'rgba(22,163,74,0.10)',
+    tint: 'rgba(22,163,74,0.12)',
     tint25: 'rgba(22,163,74,0.04)',
-    tint60: 'rgba(22,163,74,0.06)',
+    tint60: 'rgba(22,163,74,0.07)',
   },
   Extend: {
     border: '#2563eb',
-    tint: 'rgba(37,99,235,0.10)',
+    tint: 'rgba(37,99,235,0.12)',
     tint25: 'rgba(37,99,235,0.04)',
-    tint60: 'rgba(37,99,235,0.06)',
+    tint60: 'rgba(37,99,235,0.07)',
   },
   Codup: {
     border: '#ea580c',
-    tint: 'rgba(234,88,12,0.10)',
+    tint: 'rgba(234,88,12,0.12)',
     tint25: 'rgba(234,88,12,0.04)',
-    tint60: 'rgba(234,88,12,0.06)',
+    tint60: 'rgba(234,88,12,0.07)',
   },
 } as const;
 
@@ -41,7 +41,7 @@ export function FeatureCell({ feature, selected, onToggle }: FeatureCellProps) {
         cursor: 'pointer',
         borderLeft: `3px solid ${selected ? colors.border : `${colors.border}40`}`,
         backgroundColor: selected ? colors.tint : 'transparent',
-        color: selected ? '#F1F5F9' : '#64748B',
+        color: selected ? '#0F172A' : '#64748B',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -54,7 +54,7 @@ export function FeatureCell({ feature, selected, onToggle }: FeatureCellProps) {
           const el = e.currentTarget as HTMLDivElement;
           el.style.backgroundColor = colors.tint60;
           el.style.borderLeftColor = `${colors.border}99`;
-          el.style.color = '#94A3B8';
+          el.style.color = '#334155';
         }
       }}
       onMouseLeave={(e) => {

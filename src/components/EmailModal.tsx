@@ -93,17 +93,17 @@ export default function EmailModal({ selectedFeatures, notes, onSuccess }: Email
   };
 
   const inputStyle = (focused: boolean): React.CSSProperties => ({
-    background: '#1E293B',
-    border: focused ? '1px solid #2563eb' : '1px solid rgba(255,255,255,0.10)',
+    background: '#F8FAFC',
+    border: focused ? '1px solid #2563eb' : '1px solid rgba(15,23,42,0.12)',
     borderRadius: 12,
     height: 44,
     width: '100%',
-    color: '#F8FAFC',
+    color: '#0F172A',
     fontSize: 14,
     padding: '0 16px',
     outline: 'none',
     fontFamily: 'inherit',
-    boxShadow: focused ? '0 0 0 3px rgba(37,99,235,0.15)' : 'none',
+    boxShadow: focused ? '0 0 0 3px rgba(37,99,235,0.12)' : 'none',
     transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
     boxSizing: 'border-box',
   });
@@ -134,8 +134,8 @@ export default function EmailModal({ selectedFeatures, notes, onSuccess }: Email
         }}
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: '#0F172A',
-          border: '1px solid rgba(255,255,255,0.08)',
+          background: '#FFFFFF',
+          border: '1px solid rgba(15,23,42,0.10)',
           borderRadius: 16,
           padding: 40,
           width: '100%',
@@ -146,7 +146,7 @@ export default function EmailModal({ selectedFeatures, notes, onSuccess }: Email
         {/* Top label */}
         <div
           style={{
-            color: '#475569',
+            color: '#94A3B8',
             fontSize: 11,
             textTransform: 'uppercase',
             letterSpacing: '0.10em',
@@ -159,7 +159,7 @@ export default function EmailModal({ selectedFeatures, notes, onSuccess }: Email
         {/* Heading */}
         <h2
           style={{
-            color: 'white',
+            color: '#0F172A',
             fontSize: 24,
             fontWeight: 600,
             margin: '0 0 8px',
@@ -171,7 +171,7 @@ export default function EmailModal({ selectedFeatures, notes, onSuccess }: Email
         {/* Body text */}
         <p
           style={{
-            color: '#94A3B8',
+            color: '#64748B',
             fontSize: 14,
             margin: '0 0 28px',
             lineHeight: 1.5,
@@ -281,7 +281,7 @@ export default function EmailModal({ selectedFeatures, notes, onSuccess }: Email
         {/* Privacy note */}
         <p
           style={{
-            color: '#475569',
+            color: '#94A3B8',
             fontSize: 12,
             textAlign: 'center',
             marginTop: 12,
