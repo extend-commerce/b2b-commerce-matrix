@@ -1,9 +1,10 @@
 import type { Feature, Provider } from '../types';
-import csvRaw from './features.csv?raw';
+import csvRaw from './b2b-feature-matrix.csv?raw';
 
 // ── CSV parser ────────────────────────────────────────────────────────────────
-// Parses the features.csv file into a Feature array.
+// Parses b2b-feature-matrix.csv into a Feature array.
 // Columns: id, feature, category, provider, app
+// To update features: edit src/data/b2b-feature-matrix.csv and push to git.
 function parseFeatureCSV(csv: string): Feature[] {
   const lines = csv.trim().split('\n');
   const headers = lines[0].split(',').map(h => h.trim());
@@ -55,11 +56,13 @@ export const CATEGORIES: string[] = FEATURES.reduce<string[]>((acc, f) => {
 }, []);
 
 export const APP_STORE_LINKS: Record<string, string> = {
-  'Extend B2B Buying':            'https://apps.shopify.com/quick-order-b2b-and-wholesale',
-  'Extend POS for B2B':           'https://apps.shopify.com/pos-for-b2b-and-wholesale',
-  'Extend B2B Address Book':      'https://apps.shopify.com/extend-b2b-address-book',
-  'Extend Product Configurator':  'https://apps.shopify.com/b2b-product-configurator',
-  'Extend B2B Onboarding':        'https://apps.shopify.com/extend-b2b-onboarding',
-  'Extend Dealer Locator':        'https://extendcommerce.com',
-  'Extend Inventory Forecast AI': 'https://extendcommerce.com',
+  'Extend B2B Buying':                  'https://apps.shopify.com/quick-order-b2b-and-wholesale',
+  'Extend POS for B2B & Wholesale':     'https://apps.shopify.com/pos-for-b2b-and-wholesale',
+  'Extend POS for B2B':                 'https://apps.shopify.com/pos-for-b2b-and-wholesale',
+  'Extend B2B Address Book':            'https://apps.shopify.com/extend-b2b-address-book',
+  'Extend Product Configurator':        'https://apps.shopify.com/b2b-product-configurator',
+  'Extend B2B Onboarding':              'https://apps.shopify.com/extend-b2b-onboarding',
+  'Extend Projects & Quotes':           'https://extendcommerce.com',
+  'Extend Dealer Locator':              'https://extendcommerce.com',
+  'Extend Inventory Forecast AI':       'https://extendcommerce.com',
 };
