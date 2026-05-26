@@ -37,7 +37,7 @@ acc_4,Basic buyer roles (admin-assigned),Accounts & Permissions,Shopify,
 acc_5,B2B login via customer accounts,Accounts & Permissions,Shopify,
 acc_6,Company onboarding form with admin approval,Accounts & Permissions,Extend,Extend B2B Onboarding
 acc_7,Location management during onboarding,Accounts & Permissions,Extend,Extend B2B Onboarding
-acc_8,Role-based cart access (Viewer / Editor / Approver),Accounts & Permissions,Extend,Extend B2B Buying
+acc_8,Role-based cart access (Viewer / Editor / Approver / Checkout Manager),Accounts & Permissions,Extend,Extend B2B Buying
 acc_9,Cart-level approval workflows,Accounts & Permissions,Extend,Extend B2B Buying
 acc_10,Advanced multi-step purchase approval workflows,Accounts & Permissions,Codup,
 acc_11,Territory / region-based account assignment,Accounts & Permissions,Codup,
